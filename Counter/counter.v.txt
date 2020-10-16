@@ -1,0 +1,13 @@
+// Synchronous 4-bit Counter.
+module up_counter(clk,reset,counter_out);
+  input clk,reset;
+  output reg[3:0] counter_out;
+  
+  always @ (posedge clk)
+    begin
+      if(reset)
+        counter_out <= 0;
+      else
+        counter_out <= counter_out + 4'd1;
+    end
+endmodule
