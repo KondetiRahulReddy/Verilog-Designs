@@ -1,0 +1,15 @@
+// Code your design here
+module posedge_negedge_detector(clk,in,out);
+  input in;
+  output out;
+  input clk;
+  
+  reg delayed_signal;
+  
+  always @ (posedge clk) begin
+    delayed_signal <= in;  // shift signal by a clock cycle.
+  end
+  
+  assign out = delayed_signal ^ in;
+  
+endmodule
