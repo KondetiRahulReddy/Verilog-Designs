@@ -1,0 +1,9 @@
+// Code your design here
+module dff_rising_edge(d,clk,reset,out);
+  input d,clk,reset;
+  output reg out;
+  always @ (posedge clk or posedge reset) begin
+    if(reset) out <= 0;
+    else out <= d;
+  end
+endmodule
