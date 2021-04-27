@@ -1,0 +1,10 @@
+module test;
+  int unsigned address;
+  initial begin
+    repeat(5) 
+    begin
+      address = $urandom_range(30,40);
+      $display(address);
+    end
+  end
+endmodule

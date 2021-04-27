@@ -1,0 +1,12 @@
+// urandom returns 32 bit random each time its called.
+module test;
+  bit[31:0] address;
+  int address2;    // int will return negative numbers as well.
+  initial begin
+    repeat(5) begin
+      address = $urandom();
+      address2 = $urandom();
+      $display(address,address2);
+    end
+  end
+endmodule
