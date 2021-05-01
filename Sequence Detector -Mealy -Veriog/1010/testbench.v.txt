@@ -1,0 +1,50 @@
+// Code your testbench here
+// or browse Examples
+module test;
+  reg clk,reset,in;
+  wire out;
+  
+  seq dut(.clk(clk),
+          .reset(reset),
+          .in(in),
+          .out(out));
+  
+  always #5 clk = ~ clk;
+  
+  initial begin
+    clk = 1'b0;
+    reset= 1'b1;
+  end
+  
+  initial begin
+    #20 reset = 0;
+  end
+  
+  
+  initial begin
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 1;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 1;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 1;
+    @ (posedge clk) in <= 0;
+    @ (posedge clk) in <= 1;
+    @ (posedge clk) in <= 0;
+    
+  end
+  
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+  end
+ initial begin
+   #200 $finish;
+ end
+endmodule
