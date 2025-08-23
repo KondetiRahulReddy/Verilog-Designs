@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run (iverilog + vvp)",
+      "type": "shell",
+      "command": "if (!(Test-Path build)) { New-Item -ItemType Directory build | Out-Null }; iverilog -g2012 -o build/out.vvp src/tb_dut.v src/dut.v; vvp build/out.vvp",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "powershell.exe",
+          "args": [
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command"
+          ]
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Open GTKWave",
+      "type": "shell",
+      "command": "gtkwave wave.vcd",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "shell": {
+          "executable": "powershell.exe",
+          "args": [
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command"
+          ]
+        }
+      }
+    }
+  ]
+}
